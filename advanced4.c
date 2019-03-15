@@ -67,7 +67,7 @@ int o(va_list oct)
  *@c: int 2
  *Return: o
  */
-int hex(char a, unsigned int b, unsigned int c);
+int hex(char a, unsigned int b, unsigned int c)
 {
 	char d;
 	unsigned int e;

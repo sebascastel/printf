@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	va_list a;
-	int b = 0;
+	int z = 0;
 
 	formato_t ops[] = {
 	{"c", c},
@@ -25,9 +25,9 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 	return (-1);
 	va_start(a, format);
-	b = aux(format, ops, a);
+	z = aux(format, ops, a);
 	va_end(a);
-	return (b);
+	return (z);
 }
 /**
  *aux - print aux
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
  * @aux: aux
  * Return: char
  */
-int aux(const char *format, va_list a, formato_t *aux)
+int aux(const char *format, va_list a, formato_t *auxiliar)
 {
 	char b;
 	int c = 0;
@@ -51,16 +51,16 @@ int aux(const char *format, va_list a, formato_t *aux)
 	d = 0;
 	c++;
 	b = format[c];
-	while (aux[d].fo != NULL && b != *(aux[d].fo)
+	while (auxiliar[d].fo != NULL && b != *(auxiliar[d].fo))
 	d++;
-	if (aux[d].fo != NULL)
-	e = e + aux[d].p(a);
+	if (auxiliar[d].fo != NULL)
+	e = e + auxiliar[d].p(a);
 	else
 	{
 	if (b == '\0')
 	return (-1);
 	if (b != '%')
-	e += _putchar('%')
+	e += _putchar('%');
 	e += _putchar(b);
 	}
 	}
