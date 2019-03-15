@@ -1,6 +1,6 @@
 /**
  *R - return rot
- *@rot: rot13
+ *@rot13: rot13
  *Return: rot13
  */
 int R(va_list rot13)
