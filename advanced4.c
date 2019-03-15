@@ -60,3 +60,55 @@ int o(va_list oct)
 	free(c);
 	return (e);
 }
+/**
+ *hex - aux
+ *@a: char
+ *@b: int 1
+ *@c: int 2
+ *Return: o
+ */
+int hex(char a, unsigned int b, unsigned int c);
+{
+	char d;
+	unsigned int e;
+	unsigned int f;
+
+	e = b % c;
+	f = b / c;
+
+	if (e > 10)
+	d = (e - 10) + a;
+	else
+	{
+	d = e + '0';
+	}
+	if (f == 0)
+	{
+	return (_putchar(d));
+	}
+	if (f < b)
+	{
+	if (f > 10)
+	return (_putchar(f - 10 + a) + _putchar(d));
+	return (_putchar(f = '0') + _putchar(d));
+	}
+	return (hex(f, c, a) + _putchar(d));
+}
+/**
+ *x - hex
+ *@hexl: lowercase
+ *Return: hexl
+ */
+int x(va_list hexl)
+{
+return (hex(va_arg(hexl, unsigned int), 16, 'a'));
+}
+/**
+ *X - hex
+ *@hexu: uppercase
+ *Return: hexu
+ */
+int X(va_list hexu)
+{
+return (hex(va_arg(hexu, unsigned int), 16, 'A'));
+}
