@@ -19,7 +19,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(char *s);
 int c(va_list cha);
-int s(va_list str):
+int s(va_list str);
 int in(va_list inte);
 int b(va_list bin);
 int u(va_list unsi);
