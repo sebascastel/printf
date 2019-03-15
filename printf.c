@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 	{"i", in},
 	{"b", b},
 	{"u", u},
+	{"o", o},
 	{NULL, NULL}
 	};
 	if (format == NULL)
@@ -26,8 +27,10 @@ int _printf(const char *format, ...)
 	return (b);
 }
 /**
- *_printf - print
+ *aux - print aux
  * @format: string
+ * @a: parameters
+ * @aux: aux
  * Return: char
  */
 int aux(const char *format, va_list a, formato_t *aux)
@@ -63,4 +66,4 @@ int aux(const char *format, va_list a, formato_t *aux)
 	b = format[c];
 	}
 	return (e);
-}	
+}
