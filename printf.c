@@ -14,6 +14,8 @@ int _printf(const char *format, ...)
 	{"s", s},
 	{"d", in},
 	{"i", in},
+	{"b", b},
+	{"u", u},
 	{NULL, NULL}
 	};
 	if (format == NULL)
