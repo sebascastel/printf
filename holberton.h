@@ -4,17 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 /**
  * struct formato - check the formats
- *@fo : the format to print
- *@p : function to use
+ *@fo: the format to print
+ *@p: function to use
  */
 typedef struct formato
 {
 	char *fo
 	int (*p)();
-}formato_t;
+} formato_t;
 int _printf(const char *format, ...);
 int aux(const char *format, va_list a, formato_t *aux);
 int _putchar(char c);
