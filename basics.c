@@ -18,7 +18,7 @@ int s(va_list str)
 	int a;
 	char *b;
 
-	b = va_arg(str,char *);
+	b = va_arg(str, char *);
 	if (b == NULL)
 	b = "(null)";
 	a = 0;
@@ -33,16 +33,16 @@ int s(va_list str)
  */
 int in(va_list inte)
 {
-	unsigned a;
+	unsigned int a;
 	int b;
 	int c = 0;
 	int d = 1;
 
-	b = va_arg(inte,int);
+	b = va_arg(inte, int);
 	if (b < 0)
 	{
 	c = c + _putchar('-');
-	a = b*-1;
+	a = b * -1;
 	}
 	else
 	a = b;
