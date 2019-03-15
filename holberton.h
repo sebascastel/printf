@@ -27,4 +27,5 @@ int o(va_list oct);
 int x(va_list hexl);
 int X(va_list hexu);
 int hex(char a, unsigned int b, unsigned int c);
+int R(va_list rot);
 #endif
