@@ -11,7 +11,7 @@
  */
 typedef struct formato
 {
-	char *fo
+	char *fo;
 	int (*p)();
 } formato_t;
 int _printf(const char *format, ...);
