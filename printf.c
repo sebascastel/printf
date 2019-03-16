@@ -1,35 +1,5 @@
 #include "holberton.h"
 /**
- *_printf - print
- * @format: string
- * Return: char
- */
-int _printf(const char *format, ...)
-{
-	va_list a;
-	int z = 0;
-
-	formato_t ops[] = {
-	{"c", c},
-	{"s", s},
-	{"d", in},
-	{"i", in},
-	{"b", b},
-	{"u", u},
-	{"o", o},
-	{"x", x},
-	{"X", X},
-	{"R", R},
-	{NULL, NULL}
-	};
-	if (format == NULL)
-	return (-1);
-	va_start(a, format);
-	z = aux(format, ops, a);
-	va_end(a);
-	return (z);
-}
-/**
  *aux - print aux
  * @format: string
  * @a: parameters
@@ -69,4 +39,34 @@ int aux(const char *format, formato_t *auxiliar, va_list a)
 	b = format[c];
 	}
 	return (e);
+}
+/**
+ *_printf - print
+ * @format: string
+ * Return: char
+ */
+int _printf(const char *format, ...)
+{
+	va_list a;
+	int z = 0;
+
+	formato_t ops[] = {
+	{"c", c},
+	{"s", s},
+	{"d", in},
+	{"i", in},
+	{"b", b},
+	{"u", u},
+	{"o", o},
+	{"x", x},
+	{"X", X},
+	{"R", R},
+	{NULL, NULL}
+	};
+	if (format == NULL)
+	return (-1);
+	va_start(a, format);
+	z = aux(format, ops, a);
+	va_end(a);
+	return (z);
 }
