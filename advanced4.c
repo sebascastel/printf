@@ -99,16 +99,16 @@ int hex(char a, unsigned int b, unsigned int c)
  *@hexl: lowercase
  *Return: hexl
  */
-int x(va_list hexl)
+int x(va_list hext)
 {
-return (hex(va_arg(hexl, unsigned int), 16, 'a'));
+return (hex(va_arg(hext, unsigned int), 16, 'a'));
 }
 /**
  *X - hex
  *@hexu: uppercase
  *Return: hexu
  */
-int X(va_list hexu)
+int X(va_list hext)
 {
-return (hex(va_arg(hexu, unsigned int), 16, 'A'));
+return (hex(va_arg(hext, unsigned int), 16, 'A'));
 }
