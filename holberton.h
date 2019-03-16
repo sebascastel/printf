@@ -24,8 +24,8 @@ int in(va_list inte);
 int b(va_list bin);
 int u(va_list unsi);
 int o(va_list oct);
-int x(va_list hexl);
-int X(va_list hexu);
+int x(va_list hext);
+int X(va_list hext);
 int hex(char a, unsigned int b, unsigned int c);
 int R(va_list rot);
 #endif
