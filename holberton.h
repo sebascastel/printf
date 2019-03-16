@@ -15,7 +15,7 @@ typedef struct formato
 	int (*p)();
 } formato_t;
 int _printf(const char *format, ...);
-int aux(const char *format, va_list a, formato_t *auxiliar);
+int aux(const char *format, formato_t *auxiliar, va_list a);
 int _putchar(char c);
 int _strlen(char *s);
 int c(va_list cha);

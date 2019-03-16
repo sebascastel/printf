@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
  * @aux: aux
  * Return: char
  */
-int aux(const char *format, va_list a, formato_t *auxiliar)
+int aux(const char *format, formato_t *auxiliar, va_list a)
 {
 	char b;
 	int c = 0;

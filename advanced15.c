@@ -1,28 +1,30 @@
+#include "holberton.h"
 /**
- *R - return rot
- *@rot13: rot13
- *Return: rot13
+ * R - prints rot13
+ * @rot: rot
+ * Return: c
  */
-int R(va_list rot13)
+int R(va_list rot)
 {
-	char *a;
-	int b = 0;
-	int c = 0;
+	int a, boo;
+	char *c;
 
-	a = va_arg(rot13, char *);
-	if (a == NULL)
+	a = boo = 0;
+	c = va_arg(rot, char *);
+	if (c == NULL)
 	return (-1);
-	while (a[b] != '\0')
+	while (c[a] != '\0')
 	{
-	if ((a[b] >= 'a' && a[b] <= 'z') || (a[b] >= 'A' && a[b] <= 'Z'))
+	if ((c[a] >= 'a' && c[a] <= 'z') || (c[a] >= 'A' && c[a] <= 'Z'))
 	{
-	c = c + _putchar(s[a] - 13);
+	if ((c[a] >= 'n' && c[a] <= 'z') || (c[a] >= 'N' && c[a] <= 'Z'))
+	boo = boo + _putchar(c[a] - 13);
 	else
-	c = c + _putchar(s[a] + 13);
+	boo = boo + _putchar(c[a] + 13);
 	}
 	else
-	c = c + _putchar(s[a]);
-	b++;
+	boo = boo + _putchar(c[a]);
+		a++;
 	}
-	return (c);
+	return (boo);
 }
