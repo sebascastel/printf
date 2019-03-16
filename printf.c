@@ -34,6 +34,7 @@ int aux(const char *format, formato_t *auxiliar, va_list a)
 	e += _putchar(b);
 	}
 	}
+	else
 	e += _putchar(b);
 	c++;
 	b = format[c];
