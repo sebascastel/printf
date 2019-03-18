@@ -5,18 +5,24 @@
  *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: char
  */
-int c(va_list cha, char *b_others)
-{
-	b_others = b_others;
-	return (_putchar(va_arg(cha, int)));
+int c(va_list cha, char *buffer, int *ip)
+{	
+	char aux;
+
+	aux = va_arg(cha, int);
+	*ip = c_buffer(buffer, ip);
+	buffer[*ip] = aux;
+	(*ip)++;
+	return (*ip);
 }
+
 /**
  *s - return s
  *@str: char
  *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: str
  */
-int s(va_list str, char *b_others)
+int s(va_list str, char *buffer, int *ip)
 {
 	int a;
 	char *b;
@@ -26,10 +32,14 @@ int s(va_list str, char *b_others)
 	if (b == NULL)
 	b = "(null)";
 	a = 0;
+	*ip = c_buffer(buffer, ip);
 	while (b[a] != '\0')
-	a = a + _putchar(b[a]);
-	b_others = b_others;
-	return (a);
+	{
+		buffer[*ip] = b[a];
+		a++;
+		(*ip)++;
+	}
+	return (*ip);
 }
 /**
  *in - return int
@@ -37,29 +47,31 @@ int s(va_list str, char *b_others)
  *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: int
  */
-int in(va_list inte, char *b_others)
+int in(va_list inte, char *buffer, int *ip)
 {
 	unsigned int a;
 	int b;
-	int c = 0;
 	int d = 1;
 
 	b = va_arg(inte, int);
 	if (b < 0)
 	{
-	c = c + _putchar('-');
-	a = b * -1;
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = '-';
+		(*ip)++; 
+		a = b * -1;
 	}
 	else
-	a = b;
+		a = b;
 	while (a / d > 9)
-	d *= 10;
+		d *= 10;
 	while (d != 0)
 	{
-	c = c + _putchar(a / d + '0');
-	a = a % d;
-	d = d / 10;
+		*ip = c_buffer(buffer, ip);
+                buffer[*ip] = (a /d + '0');
+                (*ip)++;	
+		a = a % d;
+		d = d / 10;
 	}
-	printf("Otro de enteros: %s", b_others);
-	return (c);
+	return (*ip);
 }
