@@ -18,14 +18,17 @@ int _printf(const char *format, ...);
 int aux(const char *format, formato_t *auxiliar, va_list a);
 int _putchar(char c);
 int _strlen(char *s);
-int c(va_list cha);
-int s(va_list str);
-int in(va_list inte);
-int b(va_list bin);
-int u(va_list unsi);
-int o(va_list oct);
-int x(va_list hext);
-int X(va_list hext);
+int c(va_list cha, char *b_others);
+int s(va_list str, char *b_others);
+int in(va_list inte, char *b_others);
+int b(va_list bin, char *b_others);
+int u(va_list unsi, char *b_others);
+int o(va_list oct, char *b_others);
+int x(va_list hexl, char *b_others);
+int X(va_list hexu, char *b_others);
+int Upper_S(va_list Str, char *b_others);
+int p_ptr(va_list *pointer, char *b_others);
+ 
 int hex(char a, unsigned int b, unsigned int c);
-int R(va_list rot);
+int R(va_list rot, char *b_others);
 #endif

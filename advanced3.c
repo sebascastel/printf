@@ -2,9 +2,10 @@
 /**
  *b - return binary
  *@bin: binary
+ *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: binary
  */
-int b(va_list bin)
+int b(va_list bin, char *b_others)
 {
 	unsigned int a;
 	unsigned int b;
@@ -36,5 +37,6 @@ int b(va_list bin)
 	_putchar(c[d] + '0');
 	}
 	free(c);
+	b_others = b_others;
 	return (e);
 }

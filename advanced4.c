@@ -2,9 +2,10 @@
 /**
  *u - return unsigned
  *@unsi: unsigned
+ *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: unsigned
  */
-int u(va_list unsi)
+int u(va_list unsi, char *b_others)
 {
 	int a = 0;
 	int b = 1;
@@ -19,14 +20,16 @@ int u(va_list unsi)
 	c = c % b;
 	b = b / 10;
 	}
+	b_others = b_others;
 	return (a);
 }
 /**
  *o - octal
  *@oct: octal
  *Return: o
+ *@b_others: buffer of others (flags, width, precision & lenght)
  */
-int o(va_list oct)
+int o(va_list oct, char *b_others)
 {
 	unsigned int a;
 	unsigned int b;
@@ -58,6 +61,7 @@ int o(va_list oct)
 	_putchar(c[d] + '0');
 	}
 	free(c);
+	b_others = b_others;
 	return (e);
 }
 /**
@@ -97,18 +101,22 @@ int hex(char a, unsigned int b, unsigned int c)
 /**
  *x - hex
  *@hexl: lowercase
+ *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: hexl
  */
-int x(va_list hext)
+int x(va_list hexl, char *b_others)
 {
-return (hex(va_arg(hext, unsigned int), 16, 'a'));
+	b_others = b_others;
+return (hex(va_arg(hexl, unsigned int), 16, 'a'));
 }
 /**
  *X - hex
  *@hexu: uppercase
+ *@b_others: buffer of others (flags, width, precision & lenght)
  *Return: hexu
  */
-int X(va_list hext)
+int X(va_list hexu, char *b_others)
 {
-return (hex(va_arg(hext, unsigned int), 16, 'A'));
+	b_others = b_others;
+return (hex(va_arg(hexu, unsigned int), 16, 'A'));
 }

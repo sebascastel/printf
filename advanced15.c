@@ -2,9 +2,10 @@
 /**
  * R - prints rot13
  * @rot: rot
+ *@b_others: buffer of others (flags, width, precision & lenght)
  * Return: c
  */
-int R(va_list rot)
+int R(va_list rot, char *b_others)
 {
 	int a, boo;
 	char *c;
@@ -26,5 +27,6 @@ int R(va_list rot)
 	boo = boo + _putchar(c[a]);
 		a++;
 	}
+	b_others = b_others;
 	return (boo);
 }
