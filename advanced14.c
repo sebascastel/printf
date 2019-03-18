@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- *s - return s
+ *r - return r
  *@rev: string to reverse
  *@buffer: buffer to print
  *@ip: pointer
