@@ -2,9 +2,12 @@
 /**
  *b - return binary
  *@bin: binary
+ *@buffer: buffer to print
+ *@ip: pointer
+ *
  *Return: binary
  */
-int b(va_list bin)
+int b(va_list bin, char *buffer, int *ip)
 {
 	unsigned int a;
 	unsigned int b;
@@ -33,8 +36,10 @@ int b(va_list bin)
 	}
 	for (d = e - 1; d >= 0; d--)
 	{
-	_putchar(c[d] + '0');
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = c[d] + '0';
+		(*ip)++;
 	}
 	free(c);
-	return (e);
+	return (*ip);
 }

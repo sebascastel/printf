@@ -2,29 +2,42 @@
 /**
  * R - prints rot13
  * @rot: rot
- * Return: c
+ *@buffer: buffer to print
+ *@ip: pointer
+ * Return: Rot
  */
-int R(va_list rot)
+int R(va_list rot, char *buffer, int *ip)
 {
 	int a, boo;
-	char *c;
+	char *c, test;
 
 	a = boo = 0;
 	c = va_arg(rot, char *);
 	if (c == NULL)
-	return (-1);
+		return (-1);
 	while (c[a] != '\0')
 	{
-	if ((c[a] >= 'a' && c[a] <= 'z') || (c[a] >= 'A' && c[a] <= 'Z'))
-	{
-	if ((c[a] >= 'n' && c[a] <= 'z') || (c[a] >= 'N' && c[a] <= 'Z'))
-	boo = boo + _putchar(c[a] - 13);
-	else
-	boo = boo + _putchar(c[a] + 13);
+		if ((c[a] >= 'a' && c[a] <= 'z') || (c[a] >= 'A' && c[a] <= 'Z'))
+		{
+			if ((c[a] >= 'n' && c[a] <= 'z') || (c[a] >= 'N' && c[a] <= 'Z'))
+			{
+				*ip = c_buffer(buffer, ip);
+				test = c[a] - 13;
+				buffer[*ip] = test;
+				(*ip)++;
+				a++;
+			}
+			else
+			{
+				*ip = c_buffer(buffer, ip);
+				test = c[a] + 13;
+				buffer[*ip] = test;
+				(*ip)++;
+				a++;
+			}
+		}
+		else
+			a++;
 	}
-	else
-	boo = boo + _putchar(c[a]);
-		a++;
-	}
-	return (boo);
+return (*ip);
 }

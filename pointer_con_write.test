@@ -1,0 +1,43 @@
+#include <unistd.h>
+#include <stdio.h>
+
+int
+_putchar (char c)
+{
+	return (write (1, &c, 1));
+}
+
+int p_ptr(char *pointer)
+{
+	char *ptr;
+	int cont, a, b;
+	long int num;
+	static char *hex = "0123456789abcdef";
+	static char buffer[50];
+
+	num = (long int)pointer;
+	printf("%p\n", pointer);
+	ptr = &buffer[49];
+	*ptr = '\0';
+	          do
+		  {
+			  *--ptr = hex[num % 16];
+			  num /= 16;
+		  }
+		  while (num != 0);
+
+		  a = a + _putchar ('0');
+		  a = a + _putchar ('x');
+		  a = a + write (1, ptr, 50);
+
+		  return (a);
+}
+
+
+int main (void)
+{
+	int a = 10;
+	int *b = &a;
+	printf("%p\n",b);
+	p_ptr(b);
+}

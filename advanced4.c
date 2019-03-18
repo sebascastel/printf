@@ -2,9 +2,11 @@
 /**
  *u - return unsigned
  *@unsi: unsigned
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
  *Return: unsigned
  */
-int u(va_list unsi)
+int u(va_list unsi, char *buffer, int *ip)
 {
 	int a = 0;
 	int b = 1;
@@ -15,18 +17,23 @@ int u(va_list unsi)
 	b *= 10;
 	while (b != 0)
 	{
-	a = a + _putchar(c / b + '0');
-	c = c % b;
-	b = b / 10;
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = c / b + '0';
+		(*ip)++;
+		c = c % b;
+		b = b / 10;
 	}
 	return (a);
 }
 /**
  *o - octal
  *@oct: octal
+ *@buffer:Buffer
+ *@ip: pointer
+ *
  *Return: o
  */
-int o(va_list oct)
+int o(va_list oct, char *buffer, int *ip)
 {
 	unsigned int a;
 	unsigned int b;
@@ -55,7 +62,9 @@ int o(va_list oct)
 	}
 	for (d = e - 1; d >= 0; d--)
 	{
-	_putchar(c[d] + '0');
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = c[d] + '0';
+		(*ip)++;
 	}
 	free(c);
 	return (e);
@@ -97,18 +106,57 @@ int hex(char a, unsigned int b, unsigned int c)
 /**
  *x - hex
  *@hexl: lowercase
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
+ *
  *Return: hexl
  */
-int x(va_list hext)
+int x(va_list hexl, char *buffer, int *ip)
 {
-return (hex(va_arg(hext, unsigned int), 16, 'a'));
+	char *ptr;
+	int largo;
+	unsigned int num;
+	static char *tabla_hex = "0123456789abcdef";
+	static char my_buffer[50];
+
+	ptr = &my_buffer[49];
+	*ptr = '\0';
+	largo = 48;
+
+	num = va_arg(hexl, unsigned int);
+	do {
+		my_buffer[largo] = tabla_hex[num % 16];
+		num  /= 16;
+		largo--;
+	} while (num != 0);
+	printf("Buffer Hexa: %s\n", my_buffer);
+	*ip = c_buffer(buffer, ip);
+	for (; largo < 50; largo++)
+	{
+		c_buffer(buffer, ip);
+		buffer[*ip] = my_buffer[largo];
+		(*ip)++;
+	}
+	return (*ip);
 }
 /**
  *X - hex
  *@hexu: uppercase
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
  *Return: hexu
  */
-int X(va_list hext)
+int X(va_list hexu, char *buffer, int *ip)
 {
-return (hex(va_arg(hext, unsigned int), 16, 'A'));
+	unsigned int num;
+	static char *tabla_hex = "0123456789ABCDEF";
+
+	num = va_arg(hexu, unsigned int);
+	*ip = c_buffer(buffer, ip);
+	do {
+		buffer[*ip] = tabla_hex[num % 16];
+		(*ip)++;
+		num  /= 16;
+	} while (num != 0);
+	return (*ip);
 }
