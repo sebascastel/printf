@@ -2,10 +2,12 @@
 /**
  *b - return binary
  *@bin: binary
- *@b_others: buffer of others (flags, width, precision & lenght)
+ *@buffer: buffer to print
+ *@ip: pointer
+ *
  *Return: binary
  */
-int b(va_list bin, char *b_others)
+int b(va_list bin, char *buffer, int *ip)
 {
 	unsigned int a;
 	unsigned int b;
@@ -34,9 +36,10 @@ int b(va_list bin, char *b_others)
 	}
 	for (d = e - 1; d >= 0; d--)
 	{
-	_putchar(c[d] + '0');
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = c[d] + '0';
+		(*ip)++;
 	}
 	free(c);
-	b_others = b_others;
-	return (e);
+	return (*ip);
 }

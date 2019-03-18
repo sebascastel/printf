@@ -2,11 +2,13 @@
 /**
  *c - return char
  *@cha: char
- *@b_others: buffer of others (flags, width, precision & lenght)
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
+ *
  *Return: char
  */
 int c(va_list cha, char *buffer, int *ip)
-{	
+{
 	char aux;
 
 	aux = va_arg(cha, int);
@@ -19,7 +21,9 @@ int c(va_list cha, char *buffer, int *ip)
 /**
  *s - return s
  *@str: char
- *@b_others: buffer of others (flags, width, precision & lenght)
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
+ *
  *Return: str
  */
 int s(va_list str, char *buffer, int *ip)
@@ -44,7 +48,8 @@ int s(va_list str, char *buffer, int *ip)
 /**
  *in - return int
  *@inte: integer
- *@b_others: buffer of others (flags, width, precision & lenght)
+ *@buffer: buffer of others (flags, width, precision & lenght)
+ *@ip: pointer
  *Return: int
  */
 int in(va_list inte, char *buffer, int *ip)
@@ -58,7 +63,7 @@ int in(va_list inte, char *buffer, int *ip)
 	{
 		*ip = c_buffer(buffer, ip);
 		buffer[*ip] = '-';
-		(*ip)++; 
+		(*ip)++;
 		a = b * -1;
 	}
 	else
@@ -68,8 +73,8 @@ int in(va_list inte, char *buffer, int *ip)
 	while (d != 0)
 	{
 		*ip = c_buffer(buffer, ip);
-                buffer[*ip] = (a /d + '0');
-                (*ip)++;	
+		buffer[*ip] = (a / d + '0');
+		(*ip)++;
 		a = a % d;
 		d = d / 10;
 	}

@@ -28,10 +28,10 @@ int x(va_list hexl, char *b_others, int *ind);
 int X(va_list hexu, char *b_others, int *ind);
 int Upper_S(va_list Str, char *b_others, int *ind);
 int p_ptr(va_list pointer, char *b_others, int *ind);
- 
 int hex(char a, unsigned int b, unsigned int c);
 int R(va_list rot, char *b_others, int *ind);
 void r_buffer(char *buffer, int *ip);
 int c_buffer(char *buffer, int *ip);
+int r(va_list rev, char *b_others, int *ind);
 
 #endif

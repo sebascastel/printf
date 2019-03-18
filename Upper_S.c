@@ -3,10 +3,12 @@
 /**
  *Upper_S - print S Case
  *@str: char
- *@b_others: buffer of others (flags, width, precision & lenght)
- *Return: # print chars
+ *@buffer: buffer to print
+ *@ip: pointer
+ *Return: rint chars
  */
-int Upper_S(va_list str, char *b_others)
+
+int Upper_S(va_list str, char *buffer, int *ip)
 {
 	int a, cont;
 	char *b, *hex;
@@ -21,16 +23,27 @@ int Upper_S(va_list str, char *b_others)
 	while (b[cont] != '\0')
 	{
 		if (b[cont] >= 32 && b[cont] < 126)
-			a = a + _putchar(b[cont]);
+		{
+			*ip = c_buffer(buffer, ip);
+			buffer[*ip] = b[cont];
+			(*ip)++;
+		}
 		else
 		{
-			a = a + _putchar('\\');
-			a = a + _putchar('x');
-			a = a + _putchar(hex[(b[cont] / 16)]);
-			a = a + _putchar(hex[(b[cont] % 16)]);
+			*ip = c_buffer(buffer, ip);
+			buffer[*ip] = '\\';
+			(*ip)++;
+			*ip = c_buffer(buffer, ip);
+			buffer[*ip] = 'x';
+			(*ip)++;
+			*ip = c_buffer(buffer, ip);
+			buffer[*ip] = hex[(b[cont] / 16)];
+			(*ip)++;
+			*ip = c_buffer(buffer, ip);
+			buffer[*ip] = hex[(b[cont] % 16)];
+			(*ip)++;
 		}
 		cont++;
 	}
-	b_others = b_others;
 	return (a);
 }
