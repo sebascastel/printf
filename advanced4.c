@@ -114,29 +114,28 @@ int hex(char a, unsigned int b, unsigned int c)
 
 int x(va_list hexl, char *buffer, int *ip)
 {
-        char *ptr;
-        long int num;
-        static char *hex = "0123456789abcdef";
-        static char my_buffer[50];
+	char *ptr;
+	long int num;
+	static char *hex = "0123456789abcdef";
+	static char my_buffer[50];
 
-        num = va_arg(hexl, long int);
-        ptr = &my_buffer[49];
-        *ptr = '\0';
+	num = va_arg(hexl, long int);
+	ptr = &my_buffer[49];
+	*ptr = '\0';
 
-        do {
-                *--ptr = hex[num % 16];
-                num /= 16;
-        } while (num != 0);
+	do {
+		*--ptr = hex[num % 16];
+		num /= 16;
+	} while (num != 0);
 
-        while (*ptr != '\0')
-        {
-                *ip = c_buffer(buffer, ip);
-                buffer[*ip] = *ptr;
-                (*ip)++;
-                ptr++;
-        }
-
-        return (*ip);
+	while (*ptr != '\0')
+	{
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = *ptr;
+		(*ip)++;
+		ptr++;
+	}
+	return (*ip);
 }
 
 /**
@@ -148,27 +147,26 @@ int x(va_list hexl, char *buffer, int *ip)
  */
 int X(va_list hexu, char *buffer, int *ip)
 {
-        char *ptr;
-        long int num;
-        static char *hex = "0123456789ABCDEF";
-        static char my_buffer[50];
+	char *ptr;
+	long int num;
+	static char *hex = "0123456789ABCDEF";
+	static char my_buffer[50];
 
-        num = va_arg(hexu, long int);
-        ptr = &my_buffer[49];
-        *ptr = '\0';
+	num = va_arg(hexu, long int);
+	ptr = &my_buffer[49];
+	*ptr = '\0';
 
-        do {
-                *--ptr = hex[num % 16];
-                num /= 16;
-        } while (num != 0);
+	do {
+		*--ptr = hex[num % 16];
+		num /= 16;
+	} while (num != 0);
 
-        while (*ptr != '\0')
-        {
-                *ip = c_buffer(buffer, ip);
-                buffer[*ip] = *ptr;
-                (*ip)++;
-                ptr++;
-        }
-
-        return (*ip);
+	while (*ptr != '\0')
+	{
+		*ip = c_buffer(buffer, ip);
+		buffer[*ip] = *ptr;
+		(*ip)++;
+		ptr++;
+	}
+	return (*ip);
 }
