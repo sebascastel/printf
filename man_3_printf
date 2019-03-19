@@ -1,0 +1,48 @@
+.TH _PRINTF(3) "19 03 2019" "Holberton School"
+.SH NAME
+.B _printf function
+.SH SYNOPSIS
+ This function will send an output to the stdout as a character string
+.SH DESCRIPTION
+The
+.B _printf
+After the % appears the function will print the format data accordint to the following specifiers:
+.IP c
+This will print a character
+.IP s
+This will print a string
+.IP i
+Prints an integer
+.IP d
+Prints a decimal
+.IP %%
+This will print a single % character
+.IP p
+This will print the adress
+.IP S
+This will print special case string
+.IP b
+This will print a binary number
+.IP o
+This will print an octal number
+.IP x
+This will print a hexadecimal number in lowercase
+.IP X
+This will print a hexadecimal number in uppercase
+.IP R
+This will print rot13 encrypted string
+.IP r
+This will print the reverse string
+.P
+.SH RETURN VALUES
+If successful it will return the number of characters printed. This function will return negative 1 if it encounters and error\
+. If a NULL is passed it will return 0.
+.SH EXAMPLES
+To print a character:
+#include "holberton.h"
+_printf("Character:[%c]\n", 'H');
+.RE
+.SH BUGS
+This _printf function cannot handle the width and precition for non-custom conversion specifiers.
+.SH AUTHOR(S)
+Sebastian Castellanos and Abdel Giovanny Perez
