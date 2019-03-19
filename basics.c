@@ -36,9 +36,9 @@ int s(va_list str, char *buffer, int *ip)
 	if (b == NULL)
 	b = "(null)";
 	a = 0;
-	*ip = c_buffer(buffer, ip);
 	while (b[a] != '\0')
 	{
+		*ip = c_buffer(buffer, ip);
 		buffer[*ip] = b[a];
 		a++;
 		(*ip)++;
