@@ -36,4 +36,18 @@ int c_buffer(char *buffer, int *ip)
 }
 
 
+/**
+ *more_buffer - Make c_buffer, ip++ and buffer assign
+ *used to reduce lines
+ * @buffer: buffer to store
+ *@ip: pointer
+ *@char_form: to be stored
+ * Return: integer pointer to function
+ */
+void more_buffer(char *buffer, int *ip, char char_form)
+{
+        c_buffer(buffer, ip);
+        buffer[*ip] = char_form;
+        (*ip)++;
+}
 

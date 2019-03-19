@@ -32,6 +32,7 @@ int hex(char a, unsigned int b, unsigned int c);
 int R(va_list rot, char *b_others, int *ind);
 void r_buffer(char *buffer, int *ip);
 int c_buffer(char *buffer, int *ip);
+void more_buffer(char *buffer, int *ip, char char_form);
 int r(va_list rev, char *b_others, int *ind);
 
 #endif
