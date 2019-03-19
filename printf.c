@@ -71,7 +71,7 @@ int _printf(const char *format, ...)
 				if (get_formato == NULL)
 				{
 				c_buffer(buffer, ip);
-                                buffer[*ip] = format[i];
+                                buffer[*ip] = format[i + 1];
                                 (*ip)++;
 				i++;
 				}
