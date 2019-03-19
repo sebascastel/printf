@@ -111,34 +111,34 @@ int hex(char a, unsigned int b, unsigned int c)
  *
  *Return: hexl
  */
+
 int x(va_list hexl, char *buffer, int *ip)
 {
-	char *ptr;
-	int largo;
-	unsigned int num;
-	static char *tabla_hex = "0123456789abcdef";
-	static char my_buffer[50];
+        char *ptr;
+        long int num;
+        static char *hex = "0123456789abcdef";
+        static char my_buffer[50];
 
-	ptr = &my_buffer[49];
-	*ptr = '\0';
-	largo = 48;
+        num = va_arg(hexl, long int);
+        ptr = &my_buffer[49];
+        *ptr = '\0';
 
-	num = va_arg(hexl, unsigned int);
-	do {
-		my_buffer[largo] = tabla_hex[num % 16];
-		num  /= 16;
-		largo--;
-	} while (num != 0);
-	printf("Buffer Hexa: %s\n", my_buffer);
-	*ip = c_buffer(buffer, ip);
-	for (; largo < 50; largo++)
-	{
-		c_buffer(buffer, ip);
-		buffer[*ip] = my_buffer[largo];
-		(*ip)++;
-	}
-	return (*ip);
+        do {
+                *--ptr = hex[num % 16];
+                num /= 16;
+        } while (num != 0);
+
+        while (*ptr != '\0')
+        {
+                *ip = c_buffer(buffer, ip);
+                buffer[*ip] = *ptr;
+                (*ip)++;
+                ptr++;
+        }
+
+        return (*ip);
 }
+
 /**
  *X - hex
  *@hexu: uppercase
@@ -148,15 +148,27 @@ int x(va_list hexl, char *buffer, int *ip)
  */
 int X(va_list hexu, char *buffer, int *ip)
 {
-	unsigned int num;
-	static char *tabla_hex = "0123456789ABCDEF";
+        char *ptr;
+        long int num;
+        static char *hex = "0123456789ABCDEF";
+        static char my_buffer[50];
 
-	num = va_arg(hexu, unsigned int);
-	*ip = c_buffer(buffer, ip);
-	do {
-		buffer[*ip] = tabla_hex[num % 16];
-		(*ip)++;
-		num  /= 16;
-	} while (num != 0);
-	return (*ip);
+        num = va_arg(hexu, long int);
+        ptr = &my_buffer[49];
+        *ptr = '\0';
+
+        do {
+                *--ptr = hex[num % 16];
+                num /= 16;
+        } while (num != 0);
+
+        while (*ptr != '\0')
+        {
+                *ip = c_buffer(buffer, ip);
+                buffer[*ip] = *ptr;
+                (*ip)++;
+                ptr++;
+        }
+
+        return (*ip);
 }
