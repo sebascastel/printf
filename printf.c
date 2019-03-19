@@ -49,38 +49,31 @@ int _printf(const char *format, ...)
 	va_start(ls, format);
 	if (format == NULL)
 		return (-1);
-
 	while (format != NULL && format[i] != '\0')
 	{
 		if (format[i] != '%')
 		{
-			c_buffer(buffer, ip);
-			buffer[*ip] = format[i];
-			(*ip)++;
+			more_buffer(buffer, ip, format[i]);
 		}
 		else if (format[i + 1] == '%')
+		{
+			more_buffer(buffer, ip, format[i]);
+			i++;
+		}
+		else
+		{
+			get_formato = aux(format[i + 1]);
+			if (get_formato == NULL)
 			{
-				c_buffer(buffer, ip);
-				buffer[*ip] = format[i];
-				(*ip)++;
+				more_buffer(buffer, ip, format[i + 1]);
 				i++;
 			}
-			else 
+			else
 			{
-				get_formato = aux(format[i + 1]);
-				if (get_formato == NULL)
-				{
-				c_buffer(buffer, ip);
-                                buffer[*ip] = format[i + 1];
-                                (*ip)++;
-				i++;
-				}
-				else
-				{
 				get_formato(ls, buffer, ip);
 				i++;
-				}
 			}
+		}
 		i++;
 	}
 	va_end(ls);
