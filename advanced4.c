@@ -117,10 +117,10 @@ int x(va_list hexl, char *buffer, int *ip)
 	char *ptr;
 	long int num;
 	static char *hex = "0123456789abcdef";
-	static char my_buffer[50];
+	static char my_buffer[100];
 
 	num = va_arg(hexl, long int);
-	ptr = &my_buffer[49];
+	ptr = &my_buffer[99];
 	*ptr = '\0';
 
 	do {
@@ -150,10 +150,10 @@ int X(va_list hexu, char *buffer, int *ip)
 	char *ptr;
 	long int num;
 	static char *hex = "0123456789ABCDEF";
-	static char my_buffer[50];
+	static char my_buffer[100];
 
 	num = va_arg(hexu, long int);
-	ptr = &my_buffer[49];
+	ptr = &my_buffer[99];
 	*ptr = '\0';
 
 	do {
