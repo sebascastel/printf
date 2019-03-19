@@ -13,13 +13,13 @@ int p_ptr(va_list pointer, char *buffer, int *ip)
 	static char *hex = "0123456789abcdef";
 	static char my_buffer[50];
 
-	num = (long int)pointer;
+	num = va_arg(pointer, long int);
 	ptr = &my_buffer[49];
 	*ptr = '\0';
 
 	do {
-	*--ptr = hex[num % 16];
-	num /= 16;
+		*--ptr = hex[num % 16];
+		num /= 16;
 	} while (num != 0);
 
 	*ip = c_buffer(buffer, ip);
