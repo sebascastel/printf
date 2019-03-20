@@ -4,6 +4,7 @@
  *@rev: string to reverse
  *@buffer: buffer to print
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: str
  */

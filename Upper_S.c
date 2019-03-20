@@ -5,6 +5,7 @@
  *@str: char
  *@buffer: buffer to print
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *Return: rint chars
  */
 

@@ -1,4 +1,11 @@
 #include "holberton.h"
+/**
+ * check_flags - Verify flgas after %
+ *@buffer_flags: buffer for flags
+ *
+ * Return: Code for flags. 4 if +, 2 if #, 1 if space
+ */
+
 
 int check_flags(char *buffer_flags)
 {
