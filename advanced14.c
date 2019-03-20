@@ -7,12 +7,13 @@
  *
  *Return: str
  */
-int r(va_list rev, char *buffer, int *ip)
+int r(va_list rev, char *buffer, int *ip, char *buffer_flags)
 {
 	int a, cont;
 	char *b;
 
 	b = va_arg(rev, char *);
+	*buffer_flags = *buffer_flags;
 	cont = _strlen(b) - 1;
 
 	if (b == NULL)

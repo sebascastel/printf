@@ -6,13 +6,14 @@
  *@ip: pointer
  *Return: unsigned
  */
-int u(va_list unsi, char *buffer, int *ip)
+int u(va_list unsi, char *buffer, int *ip, char *buffer_flags)
 {
 	int a = 0;
 	int b = 1;
 	unsigned int c;
 
 	c = va_arg(unsi, unsigned int);
+	*buffer_flags = *buffer_flags;
 	while (c / b > 9)
 	b *= 10;
 	while (b != 0)
@@ -33,15 +34,17 @@ int u(va_list unsi, char *buffer, int *ip)
  *
  *Return: o
  */
-int o(va_list oct, char *buffer, int *ip)
+int o(va_list oct, char *buffer, int *ip, char *buffer_flags)
 {
 	unsigned int a;
 	unsigned int b;
 	int *c;
-	int d;
+	int d, ret_flag;
 	int e = 0;
 
 	a = va_arg(oct, unsigned int);
+	ret_flag = check_flags(buffer_flags);
+
 	b = a;
 	while (a / 8 != 0)
 	{
@@ -60,11 +63,11 @@ int o(va_list oct, char *buffer, int *ip)
 	c[d] = b % 8;
 	b /= 8;
 	}
+	if (((ret_flag / 2) % 2) == 1)
+		more_buffer(buffer, ip, 'o');
 	for (d = e - 1; d >= 0; d--)
 	{
-		*ip = c_buffer(buffer, ip);
-		buffer[*ip] = c[d] + '0';
-		(*ip)++;
+		more_buffer(buffer, ip, c[d] + '0');
 	}
 	free(c);
 	return (e);
@@ -112,27 +115,32 @@ int hex(char a, unsigned int b, unsigned int c)
  *Return: hexl
  */
 
-int x(va_list hexl, char *buffer, int *ip)
+int x(va_list hexl, char *buffer, int *ip, char *buffer_flags)
 {
 	char *ptr;
 	long int num;
+	int ret_flag; 
 	static char *hex = "0123456789abcdef";
 	static char my_buffer[100];
 
 	num = va_arg(hexl, long int);
+	*buffer_flags = *buffer_flags;
 	ptr = &my_buffer[99];
 	*ptr = '\0';
+	ret_flag = check_flags(buffer_flags);
 
 	do {
 		*--ptr = hex[num % 16];
 		num /= 16;
 	} while (num != 0);
-
+	if (((ret_flag / 2) % 2) == 1)
+	{
+		more_buffer(buffer, ip, '0');
+		more_buffer(buffer, ip, 'x');
+	}
 	while (*ptr != '\0')
 	{
-		*ip = c_buffer(buffer, ip);
-		buffer[*ip] = *ptr;
-		(*ip)++;
+		more_buffer(buffer, ip, *ptr);
 		ptr++;
 	}
 	return (*ip);
@@ -145,28 +153,33 @@ int x(va_list hexl, char *buffer, int *ip)
  *@ip: pointer
  *Return: hexu
  */
-int X(va_list hexu, char *buffer, int *ip)
+int X(va_list hexu, char *buffer, int *ip, char *buffer_flags)
 {
 	char *ptr;
 	long int num;
+	int ret_flag;
 	static char *hex = "0123456789ABCDEF";
 	static char my_buffer[100];
 
 	num = va_arg(hexu, long int);
 	ptr = &my_buffer[99];
 	*ptr = '\0';
+	ret_flag = check_flags(buffer_flags);
 
 	do {
 		*--ptr = hex[num % 16];
 		num /= 16;
 	} while (num != 0);
 
-	while (*ptr != '\0')
-	{
-		*ip = c_buffer(buffer, ip);
-		buffer[*ip] = *ptr;
-		(*ip)++;
-		ptr++;
-	}
+        if (((ret_flag / 2) % 2) == 1)
+        {
+                more_buffer(buffer, ip, '0');
+                more_buffer(buffer, ip, 'X');
+        }
+        while (*ptr != '\0')
+        {
+                more_buffer(buffer, ip, *ptr);
+                ptr++;
+        }
 	return (*ip);
 }

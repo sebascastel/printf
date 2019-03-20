@@ -6,13 +6,14 @@
  *@ip: pointer
  * Return: Rot
  */
-int R(va_list rot, char *buffer, int *ip)
+int R(va_list rot, char *buffer, int *ip, char *buffer_flags)
 {
 	int a, boo;
 	char *c, test;
 
 	a = boo = 0;
 	c = va_arg(rot, char *);
+	*buffer_flags = *buffer_flags;
 	if (c == NULL)
 		return (-1);
 	while (c[a] != '\0')
