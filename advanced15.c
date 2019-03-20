@@ -4,6 +4,7 @@
  * @rot: rot
  *@buffer: buffer to print
  *@ip: pointer
+ *@buffer_flags: buffer flags
  * Return: Rot
  */
 int R(va_list rot, char *buffer, int *ip, char *buffer_flags)

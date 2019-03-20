@@ -46,8 +46,8 @@ int c_buffer(char *buffer, int *ip)
  */
 void more_buffer(char *buffer, int *ip, char char_form)
 {
-        c_buffer(buffer, ip);
-        buffer[*ip] = char_form;
-        (*ip)++;
+	c_buffer(buffer, ip);
+	buffer[*ip] = char_form;
+	(*ip)++;
 }
 

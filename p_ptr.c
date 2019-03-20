@@ -4,6 +4,7 @@
  *@pointer: integer
  *@buffer: buffer to print
  *@ip: pointer
+ *@buffer_flags: buffer for flags
  *Return: # prints
  */
 int p_ptr(va_list pointer, char *buffer, int *ip, char *buffer_flags)

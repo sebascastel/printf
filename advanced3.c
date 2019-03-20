@@ -4,6 +4,7 @@
  *@bin: binary
  *@buffer: buffer to print
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: binary
  */

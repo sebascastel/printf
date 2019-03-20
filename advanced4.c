@@ -4,6 +4,7 @@
  *@unsi: unsigned
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *Return: unsigned
  */
 int u(va_list unsi, char *buffer, int *ip, char *buffer_flags)
@@ -31,6 +32,7 @@ int u(va_list unsi, char *buffer, int *ip, char *buffer_flags)
  *@oct: octal
  *@buffer:Buffer
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: o
  */
@@ -111,6 +113,7 @@ int hex(char a, unsigned int b, unsigned int c)
  *@hexl: lowercase
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: hexl
  */
@@ -119,7 +122,7 @@ int x(va_list hexl, char *buffer, int *ip, char *buffer_flags)
 {
 	char *ptr;
 	long int num;
-	int ret_flag; 
+	int ret_flag;
 	static char *hex = "0123456789abcdef";
 	static char my_buffer[100];
 
@@ -151,6 +154,8 @@ int x(va_list hexl, char *buffer, int *ip, char *buffer_flags)
  *@hexu: uppercase
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
+ *
  *Return: hexu
  */
 int X(va_list hexu, char *buffer, int *ip, char *buffer_flags)
@@ -171,15 +176,15 @@ int X(va_list hexu, char *buffer, int *ip, char *buffer_flags)
 		num /= 16;
 	} while (num != 0);
 
-        if (((ret_flag / 2) % 2) == 1)
-        {
-                more_buffer(buffer, ip, '0');
-                more_buffer(buffer, ip, 'X');
-        }
-        while (*ptr != '\0')
-        {
-                more_buffer(buffer, ip, *ptr);
-                ptr++;
-        }
+	if (((ret_flag / 2) % 2) == 1)
+	{
+		more_buffer(buffer, ip, '0');
+		more_buffer(buffer, ip, 'X');
+	}
+	while (*ptr != '\0')
+	{
+		more_buffer(buffer, ip, *ptr);
+		ptr++;
+	}
 	return (*ip);
 }

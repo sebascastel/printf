@@ -4,6 +4,7 @@
  *@cha: char
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: char
  */
@@ -23,6 +24,7 @@ int c(va_list cha, char *buffer, int *ip, char *buffer_flags)
  *@str: char
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *
  *Return: str
  */
@@ -51,6 +53,7 @@ int s(va_list str, char *buffer, int *ip, char *buffer_flags)
  *@inte: integer
  *@buffer: buffer of others (flags, width, precision & lenght)
  *@ip: pointer
+ *@buffer_flags: buffer flags
  *Return: int
  */
 int in(va_list inte, char *buffer, int *ip, char *buffer_flags)
@@ -70,7 +73,7 @@ int in(va_list inte, char *buffer, int *ip, char *buffer_flags)
 	else
 	{
 		a = b;
-		if (ret_flags / 4 == 1 )
+		if (ret_flags / 4 == 1)
 			more_buffer(buffer, ip, '+');
 		else if (ret_flags % 2 == 1)
 			more_buffer(buffer, ip, ' ');
