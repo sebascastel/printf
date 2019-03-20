@@ -7,10 +7,10 @@
  *
  *Return: char
  */
-int c(va_list cha, char *buffer, int *ip)
+int c(va_list cha, char *buffer, int *ip, char *buffer_flags)
 {
 	char aux;
-
+	*buffer_flags = *buffer_flags;
 	aux = va_arg(cha, int);
 	*ip = c_buffer(buffer, ip);
 	buffer[*ip] = aux;
@@ -26,12 +26,13 @@ int c(va_list cha, char *buffer, int *ip)
  *
  *Return: str
  */
-int s(va_list str, char *buffer, int *ip)
+int s(va_list str, char *buffer, int *ip, char *buffer_flags)
 {
 	int a;
 	char *b;
 
 	b = va_arg(str, char *);
+	*buffer_flags = *buffer_flags;
 
 	if (b == NULL)
 	b = "(null)";
@@ -52,22 +53,28 @@ int s(va_list str, char *buffer, int *ip)
  *@ip: pointer
  *Return: int
  */
-int in(va_list inte, char *buffer, int *ip)
+int in(va_list inte, char *buffer, int *ip, char *buffer_flags)
 {
 	unsigned int a;
-	int b;
+	int b, ret_flags;
 	int d = 1;
 
 	b = va_arg(inte, int);
+	ret_flags = check_flags(buffer_flags);
+
 	if (b < 0)
 	{
-		*ip = c_buffer(buffer, ip);
-		buffer[*ip] = '-';
-		(*ip)++;
+		more_buffer(buffer, ip, '-');
 		a = b * -1;
 	}
 	else
+	{
 		a = b;
+		if (ret_flags / 4 == 1 )
+			more_buffer(buffer, ip, '+');
+		else if (ret_flags % 2 == 1)
+			more_buffer(buffer, ip, ' ');
+	}
 	while (a / d > 9)
 		d *= 10;
 	while (d != 0)

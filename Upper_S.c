@@ -8,13 +8,14 @@
  *Return: rint chars
  */
 
-int Upper_S(va_list str, char *buffer, int *ip)
+int Upper_S(va_list str, char *buffer, int *ip, char *buffer_flags)
 {
 	int a, cont;
 	char *b, *hex;
 
 	hex = "0123456789ABCDEF";
 	b = va_arg(str, char *);
+	*buffer_flags = *buffer_flags;
 	a = 0;
 	cont = 0;
 

@@ -6,7 +6,7 @@
  *@ip: pointer
  *Return: # prints
  */
-int p_ptr(va_list pointer, char *buffer, int *ip)
+int p_ptr(va_list pointer, char *buffer, int *ip, char *buffer_flags)
 {
 	char *ptr;
 	long int num;
@@ -14,6 +14,7 @@ int p_ptr(va_list pointer, char *buffer, int *ip)
 	static char my_buffer[50];
 
 	num = va_arg(pointer, long int);
+	*buffer_flags = *buffer_flags;
 	ptr = &my_buffer[49];
 	*ptr = '\0';
 

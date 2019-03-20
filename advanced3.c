@@ -7,7 +7,7 @@
  *
  *Return: binary
  */
-int b(va_list bin, char *buffer, int *ip)
+int b(va_list bin, char *buffer, int *ip, char *buffer_flags)
 {
 	unsigned int a;
 	unsigned int b;
@@ -16,6 +16,7 @@ int b(va_list bin, char *buffer, int *ip)
 	int e = 0;
 
 	a = va_arg(bin, unsigned int);
+	*buffer_flags = *buffer_flags;
 	b = a;
 	while (a / 2 != 0)
 	{
